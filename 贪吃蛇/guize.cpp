@@ -1,5 +1,7 @@
 #include "guize.h"
 
+#include "guize.h"
+
 void guize::init1()
 {
 	s.init();
@@ -211,7 +213,7 @@ void guize::showhaikesi(int i)
 
 void guize::play()
 {
-	init1();
+	init1();	
 
 	IMAGE bg_img;
 	loadimage(&bg_img, _T("xingkong.png"), 1000, 800);
@@ -239,7 +241,7 @@ void guize::play()
 			break;
 		}
 		s.move(com);
-		eatfood();
+		eatfood(); 
 		if (s.dead())
 		{
 			f1.savejilu(0, fenshu);
@@ -360,7 +362,7 @@ void guize::play2()
 {
 	init1();
 	int cishu = 0;
-
+	
 	IMAGE bg_img;
 	loadimage(&bg_img, _T("xingkong.png"), 1000, 800);
 
@@ -449,7 +451,7 @@ void guize::play2()
 			delete q;
 		}
 		Sleep(max(70, 150 - fenshu * 0.5));
-
+	
 	}
 	HWND hnd = GetHWnd();
 	MessageBox(hnd, _T("”Œœ∑Ω· ¯"), _T("∞°≈∂"), MB_OK);
@@ -646,7 +648,9 @@ void guize::checkfood(int i)
 		{
 			fuhao[(f.getx() - jiemian - houdu) / houdu][(f.gety() - houdu) / houdu] = -1;
 			f.biaoji++;
-		}
+		}	
+		
+		
 	}
 }
 
@@ -659,7 +663,7 @@ void guize::showfoodgui(int leixing)
 		loadimage(&coin_img, _T("jinbi.png"), foodwidth + 2, foodwidth + 2);
 		is_coin_loaded = true;
 	}
-
+	
 	for (int i = 0; i < xzushu; i++)
 	{
 		for (int j = 0; j < yzushu; j++)
@@ -675,6 +679,7 @@ void guize::showfoodgui(int leixing)
 				{
 					putimage(i * houdu + jiemian + houdu, j * houdu + houdu, &coin_img);
 				}
+				
 			}
 			else if (fuhao[i][j] == -2)
 			{
@@ -714,6 +719,7 @@ void guize::init()
 	w2.showwall();
 	w3.showwall();
 	w4.showwall();
+	
 }
 
 void guize::eatfood()
@@ -769,6 +775,7 @@ void guize::eatfood()
 			s.head = s.addnode(s.gettailx() - snakewidth, s.gettaily(), s.head);
 			break;
 		}
+		
 	}
 }
 
@@ -789,4 +796,6 @@ guize::guize()
 			fuhao[i][j] = 0;
 		}
 	}
+
 }
+
